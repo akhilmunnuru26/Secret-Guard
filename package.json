@@ -1,0 +1,83 @@
+{
+  "name": "secretguard",
+  "displayName": "SecretGuard",
+  "description": "Detects hardcoded API keys, passwords and secrets in your code in real time before you accidentally commit them",
+  "version": "0.0.1",
+  "publisher": "AkhilMunnuru",
+  "engines": {
+    "vscode": "^1.109.0"
+  },
+  "categories": [
+    "Linters",
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "secretguard.scan",
+        "title": "SecretGuard: Scan File for Secrets"
+      }
+    ],
+    "views": {
+    "explorer": [
+        {
+            "id": "secretguardPanel",
+            "name": "SecretGuard",
+            "icon": "$(shield)",
+            "contextualTitle": "SecretGuard Secrets"
+        }
+    ]
+},
+"viewsContainers": {
+    "activitybar": [
+        {
+            "id": "secretguard-sidebar",
+            "title": "SecretGuard",
+            "icon": "$(shield)"
+        }
+    ]
+},
+    "configuration": {
+      "title": "SecretGuard",
+      "properties": {
+        "secretguard.enableAWSDetection": {
+          "type": "boolean",
+          "default": true,
+          "description": "Detect AWS Access Keys"
+        },
+        "secretguard.enableJWTDetection": {
+          "type": "boolean",
+          "default": true,
+          "description": "Detect JWT Tokens"
+        },
+        "secretguard.enableAPIKeyDetection": {
+          "type": "boolean",
+          "default": true,
+          "description": "Detect Generic API Keys"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.109.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "22.x",
+    "typescript-eslint": "^8.56.1",
+    "eslint": "^9.39.3",
+    "typescript": "^5.9.3",
+    "@vscode/test-cli": "^0.0.12",
+    "@vscode/test-electron": "^2.5.2"
+  }
+}
