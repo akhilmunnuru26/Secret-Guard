@@ -179,6 +179,9 @@ Contributions are welcome! If you know of a secret pattern that SecretGuard miss
 - [ ] Custom pattern support via settings
 
 ---
+## 📄 License
+
+This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
 
 
 ---
